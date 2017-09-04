@@ -438,7 +438,7 @@
          },
          // Get menu items
          getMenuItems: function() {
-          return $('.'+className);
+          return $('.cy-context-menus-cxt-menu');
          },
          // Hide menu items according to given class name
          hideMenuItemsByGivenClass: function(className) {
