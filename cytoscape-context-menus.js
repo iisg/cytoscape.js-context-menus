@@ -251,7 +251,7 @@
 
       // Creates a menu item as an html component
       function createMenuItemComponent(item) {
-        var classStr = getMenuItemClassStr(options.menuItemClasses, item.hasTrailingDivider);
+        var classStr = getMenuItemClassStr(options.menuItemClasses, item.hasTrailingDivider) + " " + item.class;
         var itemStr = '<button id="' + item.id + '" class="' + classStr + '"';
 
         if(item.tooltipText) {
@@ -444,8 +444,17 @@
          hideMenuItemsByGivenClass: function(className) {
           menuItems = $('.'+className);
           menuItems.each(function (index, menuItem) {
+            $(menuItem).data('show', false);
+            hideComponent($(menuItem));
+          });
+          return cy;
+         },
+         // Show menu items according to given class name
+         showMenuItemsByGivenClass: function(className) {
+          menuItems = $('.'+className);
+          menuItems.each(function (index, menuItem) {
             $(menuItem).data('show', true);
-            displayComponent(menuItem);
+            displayComponent($(menuItem));
           });
           return cy;
          }
