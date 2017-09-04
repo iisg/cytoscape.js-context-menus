@@ -435,6 +435,19 @@
          destroy: function() {
            destroyCxtMenu();
            return cy;
+         },
+         // Get menu items
+         getMenuItems: function() {
+          return $('.'+className);
+         },
+         // Hide menu items according to given class name
+         hideMenuItemsByGivenClass: function(className) {
+          menuItems = $('.'+className);
+          menuItems.each(function (index, menuItem) {
+            $(menuItem).data('show', true);
+            displayComponent(menuItem);
+          });
+          return cy;
          }
         };
 
