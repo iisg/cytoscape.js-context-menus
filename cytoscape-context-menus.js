@@ -240,7 +240,7 @@
       // create cxtMenu and append it to body
       function createAndAppendCxtMenuComponent() {
         var classes = getClassStr(options.contextMenuClasses);
-//        classes += ' cy-context-menus-cxt-menu';
+        // classes += ' cy-context-menus-cxt-menu';
         $cxtMenu = $('<div class=' + classes + '></div>');
         $cxtMenu.addClass('cy-context-menus-cxt-menu');
         setScratchProp('cxtMenu', $cxtMenu);
@@ -376,90 +376,89 @@
       function getInstance(cy) {
         var instance = {
           // Returns whether the extension is active
-         isActive: function() {
-           return getScratchProp('active');
-         },
-         // Appends given menu item to the menu items list.
-         appendMenuItem: function(item) {
-           createAndAppendMenuItemComponent(item);
-           return cy;
-         },
-         // Appends menu items in the given list to the menu items list.
-         appendMenuItems: function(items) {
-           createAndAppendMenuItemComponents(items);
-           return cy;
-         },
-         // Removes the menu item with given ID.
-         removeMenuItem: function(itemID) {
-           removeAndUnbindMenuItem(itemID);
-           return cy;
-         },
-         // Sets whether the menuItem with given ID will have a following divider.
-         setTrailingDivider: function(itemID, status) {
-           setTrailingDivider(itemID, status);
-           return cy;
-         },
-         // Inserts given item before the existingitem.
-         insertBeforeMenuItem: function(item, existingItemID) {
-           createAndInsertMenuItemComponentBeforeExistingComponent(item, existingItemID);
-           return cy;
-         },
-         // Moves the item with given ID before the existingitem.
-         moveBeforeOtherMenuItem: function(itemID, existingItemID) {
-           moveBeforeOtherMenuItemComponent(itemID, existingItemID);
-           return cy;
-         },
-         // Disables the menu item with given ID.
-         disableMenuItem: function(itemID) {
-           disableComponent(itemID);
-           return cy;
-         },
-         // Enables the menu item with given ID.
-         enableMenuItem: function(itemID) {
-           enableComponent(itemID);
-           return cy;
-         },
-         // Disables the menu item with given ID.
-         hideMenuItem: function(itemID) {
-           $('#'+itemID).data('show', false);
-           hideComponent($('#'+itemID));
-           return cy;
-         },
-         // Enables the menu item with given ID.
-         showMenuItem: function(itemID) {
-           $('#'+itemID).data('show', true);
-           displayComponent($('#'+itemID));
-           return cy;
-         },
-         // Destroys the extension instance
-         destroy: function() {
-           destroyCxtMenu();
-           return cy;
-         },
-         // Get menu items
-         getMenuItems: function() {
-          return $('.cy-context-menus-cxt-menu');
-         },
-         // Hide menu items according to given class name
-         hideMenuItemsByGivenClass: function(className) {
-          menuItems = $('.'+className);
-          menuItems.each(function (index, menuItem) {
-            $(menuItem).data('show', false);
-            hideComponent($(menuItem));
-          });
-          return cy;
-         },
-         // Show menu items according to given class name
-         showMenuItemsByGivenClass: function(className) {
-          menuItems = $('.'+className);
-          menuItems.each(function (index, menuItem) {
-            $(menuItem).data('show', true);
-            displayComponent($(menuItem));
-          });
-          return cy;
-         }
+          isActive: function() {
+            return getScratchProp('active');
+          },
+          // Appends given menu item to the menu items list.
+          appendMenuItem: function(item) {
+            createAndAppendMenuItemComponent(item);
+            return cy;
+          },
+          // Appends menu items in the given list to the menu items list.
+          appendMenuItems: function(items) {
+            createAndAppendMenuItemComponents(items);
+            return cy;
+          },
+          // Removes the menu item with given ID.
+          removeMenuItem: function(itemID) {
+            removeAndUnbindMenuItem(itemID);
+            return cy;
+          },
+          // Sets whether the menuItem with given ID will have a following divider.
+          setTrailingDivider: function(itemID, status) {
+            setTrailingDivider(itemID, status);
+            return cy;
+          },
+          // Inserts given item before the existingitem.
+          insertBeforeMenuItem: function(item, existingItemID) {
+            createAndInsertMenuItemComponentBeforeExistingComponent(item, existingItemID);
+            return cy;
+          },
+          // Moves the item with given ID before the existingitem.
+          moveBeforeOtherMenuItem: function(itemID, existingItemID) {
+            moveBeforeOtherMenuItemComponent(itemID, existingItemID);
+            return cy;
+          },
+          // Disables the menu item with given ID.
+          disableMenuItem: function(itemID) {
+            disableComponent(itemID);
+            return cy;
+          },
+          // Enables the menu item with given ID.
+          enableMenuItem: function(itemID) {
+            enableComponent(itemID);
+            return cy;
+          },
+          // Disables the menu item with given ID.
+          hideMenuItem: function(itemID) {
+            $('#'+itemID).data('show', false);
+            hideComponent($('#'+itemID));
+            return cy;
+          },
+          // Enables the menu item with given ID.
+          showMenuItem: function(itemID) {
+            $('#'+itemID).data('show', true);
+            displayComponent($('#'+itemID));
+            return cy;
+          },
+          // Destroys the extension instance
+          destroy: function() {
+            destroyCxtMenu();
+            return cy;
+          },
+          // Get menu items
+          getMenuItems: function() {
+            return $('.cy-context-menus-cxt-menu');
+          },
+          // Hide menu items according to given class name
+          hideMenuItemsByGivenClass: function(className) {
+            menuItems = $('.'+className);
+            menuItems.each(function (index, menuItem) {
+              $(menuItem).data('show', false);
+              hideComponent($(menuItem));
+            });
+            return cy;
+          },
+          // Show menu items according to given class name
+          showMenuItemsByGivenClass: function(className) {
+            menuItems = $('.'+className);
+            menuItems.each(function (index, menuItem) {
+              $(menuItem).data('show', true);
+              displayComponent($(menuItem));
+            });
+            return cy;
+          }
         };
-
         return instance;
       }
 
