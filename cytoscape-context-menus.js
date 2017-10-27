@@ -87,28 +87,17 @@
       }
 
       // Get string representation of css classes
-      function getMenuItemClassStr(classes, hasTrailingDivider) {
-        var str = getClassStr(classes);
+      function getMenuItemClassStr(classes, itemClases, hasTrailingDivider) {
+        var str = classes.join(' ');
+        
+        if (itemClases != null) {
+          str += itemClases.join(' ');
+        }
 
         str += ' ' + menuItemCSSClass;
 
         if(hasTrailingDivider) {
           str += ' ' + dividerCSSClass;
-        }
-
-        return str;
-      }
-
-      // Get string representation of css classes
-      function getClassStr(classes) {
-        var str = '';
-
-        for( var i = 0; i < classes.length; i++ ) {
-          var className = classes[i];
-          str += className;
-          if(i !== classes.length - 1) {
-            str += ' ';
-          }
         }
 
         return str;
@@ -239,7 +228,7 @@
 
       // create cxtMenu and append it to body
       function createAndAppendCxtMenuComponent() {
-        var classes = getClassStr(options.contextMenuClasses);
+        var classes = options.contextMenuClasses.join(' ');
         // classes += ' cy-context-menus-cxt-menu';
         $cxtMenu = $('<div class=' + classes + '></div>');
         $cxtMenu.addClass('cy-context-menus-cxt-menu');
@@ -251,7 +240,7 @@
 
       // Creates a menu item as an html component
       function createMenuItemComponent(item) {
-        var classStr = getMenuItemClassStr(options.menuItemClasses, item.hasTrailingDivider) + " " + item.class;
+        var classStr = getMenuItemClassStr(options.menuItemClasses, item.menuItemClasses, item.hasTrailingDivider);
         var itemStr = '<button id="' + item.id + '" class="' + classStr + '"';
 
         if(item.tooltipText) {
